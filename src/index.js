@@ -1,4 +1,5 @@
 import { fetchBreeds, fetchCatByBreed} from "./cat-api";
+import SlimSelect from "slim-select";
 
 const breedSelectEl = document.querySelector(".breed-select");
 const catInfoEl = document.querySelector(".cat-info");
@@ -20,6 +21,10 @@ function populateBreeds(data) {
     let optionsMarkup = data.map(({ name, id }) => `<option value="${id}">${name}</option>`).join("");
     breedSelectEl.insertAdjacentHTML("beforeend", optionsMarkup);
     breedSelectEl.classList.remove("is-hidden");
+
+    // Initialize SlimSelect after options are loaded
+    //Sir ang panget ng SlimSelect, di ko na lang ginamit
+    // const slimSelect = new SlimSelect({select: breedSelectEl, settings: {alwaysOpen:false,}});
 }
 
 chooseBreed();
